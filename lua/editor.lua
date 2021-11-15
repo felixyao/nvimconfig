@@ -186,7 +186,6 @@ editor.setup_git = function()
     update_debounce = 200,
     status_formatter = nil
     }
-    print('config git')
 end
      
 return editor
