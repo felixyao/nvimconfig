@@ -1,0 +1,6 @@
+local basic = require('basic')
+basic.setup()
+basic.load_plugins()
+require('editor').setup()
+require('laf').setup()
+require('editor').setup_keymapping()
