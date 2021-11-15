@@ -153,6 +153,7 @@ basic.load_plugins = function()
             config = function()
                 require('editor').setup_whichkey()
          end}
+        use {'terrortylor/nvim-comment', cmd = "CommentToggle", config = "require('nvim_comment').setup()"}
 
     end)
 end
