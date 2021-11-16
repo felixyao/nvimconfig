@@ -53,8 +53,12 @@ end
 local servers = {
     sumneko_lua = function(lspconfig, capabilities)
             --lua server :
-        local sumneko_root_path = '/home/efenyao/local/bin/lua-language-server/bin/Linux'
-        local sumneko_binary = sumneko_root_path .. '/lua-language-server'
+        local settings = require('local_settings')
+        if string.len(settings.lsp_sumneko_root_path) == 0  or string.len(settings.lsp_sumneko_binary) == 0 then
+            return
+        end
+        local sumneko_root_path = settings.lsp_sumneko_root_path
+        local sumneko_binary = settings.lsp_sumneko_binary
         local lsp_config = {
             cmd = {sumneko_binary, '-E', sumneko_root_path..'/main.lua'},
             capabilities = capabilities,
@@ -72,6 +76,24 @@ local servers = {
     end,
 }
 _M.setup = function()
+    local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+
+    for type, icon in pairs(signs) do
+	    local hl = "DiagnosticSign" .. type
+	    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = ""})
+	end
+
+--	Show icons in autocomplete
+    require('vim.lsp.protocol').CompletionItemKind = {
+    '', '', 'ƒ', ' ', '', '', '', 'ﰮ', '', '', '', '', '了', ' ', '﬌ ', ' ', ' ', '', ' ', ' ',
+    ' ', ' ', '', '', '<>'
+    }
+
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = true,
+        virtual_text = {spacing = 5, severity_limit = 'Warning'},
+        update_in_insert = true
+    })
    local lspconfig = require('lspconfig')
    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
    capabilities.textDocument.completion.completionItem.snippetSupport = true
