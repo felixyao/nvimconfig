@@ -71,7 +71,6 @@ basic.load_plugins = function()
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         execute 'packadd packer.nvim'
     end
-    
     vim.cmd([[
 	augroup packer_user_config
          autocmd!
@@ -86,6 +85,7 @@ basic.load_plugins = function()
         local laf = require('laf')
         local editor = require('editor')
         local nav = require('navigation')
+        local intelli = require('intellisense')
 
         use 'wbthomason/packer.nvim'
         use {
@@ -98,7 +98,7 @@ basic.load_plugins = function()
         use {'hoob3rt/lualine.nvim',
               event = 'BufWinEnter',
               config = laf.setup_statusline
-            } 
+            }
         use { 'nvim-treesitter/nvim-treesitter',
               run = ':TSUpdate',
               event = 'BufWinEnter',
@@ -112,20 +112,22 @@ basic.load_plugins = function()
         use 'shaunsingh/nord.nvim'
         use 'folke/tokyonight.nvim'
         use {'dracula/vim', as = 'dracula'}
+        -- snippet
+        use {'hrsh7th/vim-vsnip'}
         --LSP and Autocomplete
-        use {'neovim/nvim-lspconfig', event = "BufRead"}
+        use {'neovim/nvim-lspconfig'}
         use {'onsails/lspkind-nvim'}
         use {
             'hrsh7th/nvim-cmp',
             event = "InsertEnter *",
-            config = function()
-                require 'cmp-config'
-            end,
+            config = intelli.setup_cmp,
             }
-        use {'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp"}
+        use {'hrsh7th/cmp-nvim-lsp'} -- this one need to config lsp servers at start up
         use {'hrsh7th/cmp-buffer', after = "nvim-cmp"}
         use {'uga-rosa/cmp-dictionary', after = "nvim-cmp"}
-        use {'hrsh7th/vim-vsnip',  after = "nvim-cmp"}
+        use {'hrsh7th/cmp-path',  after = "nvim-cmp"}
+        use {'hrsh7th/cmp-cmdline',  after = "nvim-cmp"}
+        use {'hrsh7th/cmp-vsnip',  after = "nvim-cmp"}
         --Version Control
         use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, event = "BufWinEnter", config = editor.setup_git}
         --Navigation

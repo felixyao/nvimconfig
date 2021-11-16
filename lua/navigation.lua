@@ -1,6 +1,6 @@
--- handle searching finding 
+-- handle searching finding
 
-nav = {}
+local nav = {}
 
 nav.setup = function()
     local actions = require('telescope.actions')
