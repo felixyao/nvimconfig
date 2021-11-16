@@ -81,30 +81,24 @@ basic.load_plugins = function()
     local packer = require('packer')
 
     return packer.startup(function(use)
-
-        local laf = require('laf')
-        local editor = require('editor')
-        local nav = require('navigation')
-        local intelli = require('intellisense')
-
         use 'wbthomason/packer.nvim'
         use {
             'akinsho/nvim-bufferline.lua',
              requires = 'kyazdani42/nvim-web-devicons',
              event = 'BufWinEnter',
-             config = laf.setup_bufferline
+             config = "require'laf'.setup_bufferline()"
             }
 
         use {'hoob3rt/lualine.nvim',
               event = 'BufWinEnter',
-              config = laf.setup_statusline
+              config = "require'laf'.setup_statusline()"
             }
         use { 'nvim-treesitter/nvim-treesitter',
               run = ':TSUpdate',
               event = 'BufWinEnter',
-              config = laf.setup_highlight
+              config = "require'laf'.setup_highlight()"
             }
-        use { 'akinsho/toggleterm.nvim', config = editor.setup_terminal }
+        use { 'akinsho/toggleterm.nvim', config = "require'editor'.setup_terminal()" }
         use {'windwp/nvim-ts-autotag',  after = 'nvim-treesitter'}
         -- Colorschemes
         use 'joshdick/onedark.vim'
@@ -120,7 +114,7 @@ basic.load_plugins = function()
         use {
             'hrsh7th/nvim-cmp',
             event = "InsertEnter *",
-            config = intelli.setup_cmp,
+            config = "require'intellisense'.setup_cmp()",
             }
         use {'hrsh7th/cmp-nvim-lsp'} -- this one need to config lsp servers at start up
         use {'hrsh7th/cmp-buffer', after = "nvim-cmp"}
@@ -129,20 +123,20 @@ basic.load_plugins = function()
         use {'hrsh7th/cmp-cmdline',  after = "nvim-cmp"}
         use {'hrsh7th/cmp-vsnip',  after = "nvim-cmp"}
         --Version Control
-        use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, event = "BufWinEnter", config = editor.setup_git}
+        use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, event = "BufWinEnter", config = "require'editor'.setup_git()"}
         --Navigation
         use {
             'nvim-telescope/telescope.nvim',
             requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
             cmd = "Telescope",
-            config = nav.setup,
+            config = "require'navigation'.setup()",
            }
-        use {'kyazdani42/nvim-tree.lua', cmd = "NvimTreeToggle", config = editor.setup_file_exploer}
+        use {'kyazdani42/nvim-tree.lua', cmd = "NvimTreeToggle", config = "require'editor'.setup_file_exploer()"}
         -- Other
         use {
             'folke/which-key.nvim',
             event = 'BufWinEnter',
-            config = editor.setup_whichkey}
+            config = "require'editor'.setup_whichkey()"}
         use {'terrortylor/nvim-comment', cmd = "CommentToggle", config = "require('nvim_comment').setup()"}
 
     end)
