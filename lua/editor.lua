@@ -44,6 +44,7 @@ editor.setup_whichkey = function()
             f = {'<cmd>Telescope filetypes<CR>', 'vim filetypes'},
             o = {'<cmd>Telescope colorscheme<CR>', 'vim colorscheme'},
             h = {'<cmd>Telescope help_tags<CR>', 'vim help'},
+            l = {'<cmd>LspInfo<CR>', '[LSP] print lsp info'},
         },
         v = {
             name = "version control",
