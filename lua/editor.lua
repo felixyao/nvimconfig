@@ -2,7 +2,7 @@
 --Keybanding
 --editor functions such as file exploer. git terminal
 
-editor = {}
+local editor = {}
 
 editor.setup_whichkey = function()
     local mappings = {
@@ -19,16 +19,23 @@ editor.setup_whichkey = function()
         e = {':NvimTreeToggle<CR>', 'File Exploer'},
         f = {'<cmd>Telescope find_files<CR>', 'Find file'},
         s = {'<cmd>Telescope grep_string<CR>', 'Seach text under cusor'},
+        g = {
+            name = 'goto ',
+            d = {'<cmd>Telescope lsp_definitions<CR>', '[LSP] goto definition'},
+            t = {'<cmd>Telescope lsp_type_definitions<CR>', '[LSP] goto type definition'},
+            i = {'<cmd>Telescope lsp_implementations<CR>', '[LSP] goto implementation'},
+            j = {'<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', '[LSP] goto next error'},
+            k = {'<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', '[LSP] goto previous error'},
+            p = {'<cmd>Telescope jumplist<CR>', 'goto previous visted places'},
+        },
         S = {
             name = 'search',
             f = {'<cmd>Telescope git_files<CR>', 'Find git files'},
             b = {'<cmd>Telescope buffers<CR>', 'find buffer'},
             s = {'<cmd>Telescope live_grep<CR>', 'search text in files'},
-            j = {'<cmd>Telescope jumplist<CR>', 'search Places '},
             r = {'<cmd>Telescope lsp_references<CR>', '[LSP] find references'},
-            d = {'<cmd>Telescope lsp_definitions<CR>', '[LSP] find definition'},
-            t = {'<cmd>Telescope lsp_type_definitions<CR>', '[LSP] find type definition'},
             o = {'<cmd>Telescope oldfiles<CR>', 'Recent Files'},
+            e = {'<cmd>Telescope lsp_workspace_diagnostics<CR>', '[LSP] find errors'},
         },
         h = {
             name = 'help',
@@ -69,7 +76,6 @@ editor.setup_keymapping= function()
     vim.g.mapleader = " ",
     vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true})
     vim.api.nvim_set_keymap('i', 'kj', '<ESC>', {noremap = true})
-    
     vim.api.nvim_set_keymap('n', '<C-Up>', ':resize -2<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<C-Down>', ':resize +2<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<C-Left>', ':vertical resize -2<CR>', {noremap = true, silent = true})
@@ -106,24 +112,24 @@ editor.setup= function()
     vim.g.nvim_tree_gitignore = 1
     vim.g.nvim_tree_highlight_opened_files = 1
     vim.g.nvim_tree_indent_markers = 1
-    vim.g.nvim_tree_icons = {                                                                                                                                                                                                                                 
-        default = "",                                                                                                                                                                                                                          
-        symlink = "",                                                                                                                                                                                                                          
-        git = {                                                                                                                                                                                                                                 
-            unstaged = "",                                                                                                                                                                                                                       
-            staged = "S",                                                                                                                                                                                                                         
-            unmerged = "",                                                                                                                                                                                                                       
-            renamed = "➜",                                                                                                                                                                                                                        
-            deleted = "",                                                                                                                                                                                                                        
-            untracked = "U",                                                                                                                                                                                                                      
-            ignored = "◌",                                                                                                                                                                                                                        
-        },                                                                                                                                                                                                                                      
-        folder = {                                                                                                                                                                                                                              
-            default = "",                                                                                                                                                                                                                        
-            open = "",                                                                                                                                                                                                                           
-            empty = "",                                                                                                                                                                                                                          
-            empty_open = "",                                                                                                                                                                                                                     
-            symlink = "",                                                                                                                                                                                                                        
+    vim.g.nvim_tree_icons = {
+        default = "",
+        symlink = "",
+        git = {
+            unstaged = "",
+            staged = "S",
+            unmerged = "",
+            renamed = "➜",
+            deleted = "",
+            untracked = "U",
+            ignored = "◌",
+        },
+        folder = {
+            default = "",
+            open = "",
+            empty = "",
+            empty_open = "",
+            symlink = "",
         },
     }
 
@@ -160,7 +166,6 @@ editor.setup_file_exploer= function()
             --the command arguments as a list
             args = {}
         },
-	
         view = {width = 25, side = 'left', auto_resize = true, mappings = {custom_only = false, list = {}}},
         filters = {
             dotfiles = true,
@@ -187,5 +192,4 @@ editor.setup_git = function()
     status_formatter = nil
     }
 end
-     
 return editor
