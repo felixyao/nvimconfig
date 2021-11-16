@@ -138,6 +138,10 @@ basic.load_plugins = function()
             event = 'BufWinEnter',
             config = "require'editor'.setup_whichkey()"}
         use {'terrortylor/nvim-comment', cmd = "CommentToggle", config = "require('nvim_comment').setup()"}
+        use { "justinmk/vim-sneak",
+            config = function()
+              vim.g["sneak#label"] = 1
+            end}
 
     end)
 end
