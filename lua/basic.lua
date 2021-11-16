@@ -1,4 +1,5 @@
 local basic = {}
+
 basic.setup = function ()
     vim.cmd('filetype plugin indent on')
     vim.o.shortmess = vim.o.shortmess .. 'c'
@@ -61,6 +62,7 @@ basic.setup = function ()
 end
 
 basic.load_plugins = function()
+
     local execute = vim.api.nvim_command
     local fn = vim.fn
     local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -69,46 +71,40 @@ basic.load_plugins = function()
         fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
         execute 'packadd packer.nvim'
     end
-
-    local packer = require('packer')
     
     vim.cmd([[
 	augroup packer_user_config
          autocmd!
          autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-        augroup end
-     ]])
+    augroup end
+    ]])
+
+    local packer = require('packer')
 
     return packer.startup(function(use)
+
+        local laf = require('laf')
+        local editor = require('editor')
+        local nav = require('navigation')
 
         use 'wbthomason/packer.nvim'
         use {
             'akinsho/nvim-bufferline.lua',
              requires = 'kyazdani42/nvim-web-devicons',
              event = 'BufWinEnter',
-             config = function()
-                  require('laf').setup_bufferline()
-             end,
+             config = laf.setup_bufferline
             }
 
         use {'hoob3rt/lualine.nvim',
               event = 'BufWinEnter',
-              config = function()
-                  require('laf').setup_statusline()
-              end,
+              config = laf.setup_statusline
             } 
         use { 'nvim-treesitter/nvim-treesitter',
               run = ':TSUpdate',
               event = 'BufWinEnter',
-              config = function()
-                require('laf').setup_highlight()
-              end,
+              config = laf.setup_highlight
             }
-        use { 'akinsho/toggleterm.nvim',
-              config = function()
-                require('editor').setup_terminal()
-              end,
-            }
+        use { 'akinsho/toggleterm.nvim', config = editor.setup_terminal }
         use {'windwp/nvim-ts-autotag',  after = 'nvim-treesitter'}
         -- Colorschemes
         use 'joshdick/onedark.vim'
@@ -131,28 +127,20 @@ basic.load_plugins = function()
         use {'uga-rosa/cmp-dictionary', after = "nvim-cmp"}
         use {'hrsh7th/vim-vsnip',  after = "nvim-cmp"}
         --Version Control
-        use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, event = "BufWinEnter", config = function()
-                require('editor').setup_git()
-        end,}
+        use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, event = "BufWinEnter", config = editor.setup_git}
         --Navigation
         use {
             'nvim-telescope/telescope.nvim',
             requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
             cmd = "Telescope",
-            config = function()
-                require('navigation').setup()
-            end,
+            config = nav.setup,
            }
-        use {'kyazdani42/nvim-tree.lua', cmd = "NvimTreeToggle", config = function()
-            require('editor').setup_file_exploer()
-        end}
+        use {'kyazdani42/nvim-tree.lua', cmd = "NvimTreeToggle", config = editor.setup_file_exploer}
         -- Other
         use {
             'folke/which-key.nvim',
             event = 'BufWinEnter',
-            config = function()
-                require('editor').setup_whichkey()
-         end}
+            config = editor.setup_whichkey}
         use {'terrortylor/nvim-comment', cmd = "CommentToggle", config = "require('nvim_comment').setup()"}
 
     end)
