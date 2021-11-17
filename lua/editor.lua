@@ -74,7 +74,7 @@ editor.setup_whichkey = function()
 end
 
 editor.setup_keymapping= function()
-    vim.g.mapleader = " ",
+    vim.g.mapleader = " "
     vim.api.nvim_set_keymap('i', 'jk', '<ESC>', {noremap = true})
     vim.api.nvim_set_keymap('i', 'kj', '<ESC>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<C-Up>', ':resize -2<CR>', {noremap = true, silent = true})
@@ -87,10 +87,12 @@ editor.setup_keymapping= function()
     vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true, silent = false})
     vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true, silent = false})
 
-    vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', {noremap = true, silent = false})
-    vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', {noremap = true, silent = false})
-    vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', {noremap = true, silent = false})
-    vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<jk>',  '<C-\\><C-n>', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-n><C-w>h', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-n><C-w>j', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-n><C-w>k', {noremap = true, silent = false})
+    vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-w>l', {noremap = true, silent = false})
 
     vim.api.nvim_set_keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
@@ -146,7 +148,7 @@ editor.setup_terminal = function()
         shading_factor = '1',
         start_in_insert = true,
         persist_size = true,
-        direction = 'horizontal'
+        direction = 'float'
     }
 end
 
