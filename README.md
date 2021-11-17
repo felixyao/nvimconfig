@@ -29,8 +29,8 @@ You can left the keys as empty string to disable the lsp function.
 
 - Start nvim and install plugins
 
--- start nvim
--- type ":PackerSync"
+    - start nvim
+    - type ":PackerSync"
 
 - restart nvim and enjoy it!
 
@@ -42,10 +42,10 @@ I recommanded to use them but it is not mandatory.
 
 General language server guide could see [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)  
 And I mainly use these:
-- [lua](https://github.com/sumneko/lua-language-server)
-- [python](https://github.com/microsoft/pyright)
-- [yaml](https://github.com/redhat-developer/yaml-language-server)
-- [erlang](https://erlang-ls.github.io/)
+- [lua](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua)
+- [python](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright)
+- [yaml](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls)
+- [erlang](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#erlangls)
 
 
 
