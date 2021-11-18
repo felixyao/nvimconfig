@@ -51,6 +51,6 @@ laf.setup_highlight = function()
 end
 laf.setup = function()
     vim.o.termguicolors = true
-    vim.cmd('colorscheme onedark')
+    vim.cmd('colorscheme tokyonight')
 end
 return laf
