@@ -74,7 +74,7 @@ basic.load_plugins = function()
     vim.cmd([[
 	augroup packer_user_config
          autocmd!
-         autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+         autocmd BufWritePost basic.lua source <afile> | PackerCompile
     augroup end
     ]])
 
