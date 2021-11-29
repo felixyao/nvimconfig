@@ -68,6 +68,15 @@ local servers = {
         }
         lspconfig.sumneko_lua.setup(lsp_config)
     end,
+
+    erlangls = function(lspconfig, capabilities)
+        --erlang_ls server :
+        local lsp_config = {
+            capabilities = capabilities,
+            cmd = {"erlang_ls", "--transport", "stdio"};
+        }
+        lspconfig.erlangls.setup(lsp_config )
+    end,
 }
 _M.setup = function()
     local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
