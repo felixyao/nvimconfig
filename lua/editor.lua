@@ -50,7 +50,6 @@ editor.setup_whichkey = function()
             name = "version control",
             j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
             k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-            b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
             p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
             r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
             R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
@@ -182,6 +181,16 @@ editor.setup_git = function()
         delete = {hl = 'GitSignsDelete', text = '契', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn'},
         topdelete = {hl = 'GitSignsDelete', text = '契', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn'},
         changedelete = {hl = 'GitSignsChange', text = '▎', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn'}
+    },
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = false,
+    },
+    current_line_blame_formatter_opts = {
+        relative_time = false
     },
     numhl = false,
     linehl = false,
