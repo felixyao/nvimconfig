@@ -77,6 +77,14 @@ local servers = {
         }
         lspconfig.erlangls.setup(lsp_config )
     end,
+
+    html = function(lspconfig, capabilities)
+        --erlang_ls server :
+        local lsp_config = {
+            capabilities = capabilities,
+        }
+        lspconfig.html.setup(lsp_config )
+    end,
 }
 _M.setup = function()
     local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
