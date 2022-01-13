@@ -129,7 +129,7 @@ basic.load_plugins = function()
             'nvim-telescope/telescope.nvim',
             requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
             cmd = "Telescope",
-            config = "require'navigation'.setup()",
+            config = "require 'navigation'.setup()",
            }
         use {'kyazdani42/nvim-tree.lua', cmd = "NvimTreeToggle", config = "require'editor'.setup_file_exploer()"}
         -- Other

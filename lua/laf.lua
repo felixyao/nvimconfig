@@ -37,7 +37,7 @@ end
 
 laf.setup_highlight = function()
     require('nvim-treesitter.configs').setup {
-        ensure_installed = {'c', 'cpp', 'bash', 'lua', 'python'},
+        ensure_installed = {'c', 'cpp', 'bash', 'lua', 'python', 'javascript', 'html', 'css'},
         indent = {enable = true},
         highlight = {enable = true},
         autotag = {enable = true},
