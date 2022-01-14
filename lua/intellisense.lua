@@ -79,11 +79,38 @@ local servers = {
     end,
 
     html = function(lspconfig, capabilities)
-        --erlang_ls server :
         local lsp_config = {
             capabilities = capabilities,
         }
         lspconfig.html.setup(lsp_config )
+    end,
+
+    cssls = function(lspconfig, capabilities)
+        local lsp_config = {
+            capabilities = capabilities,
+        }
+        lspconfig.cssls.setup(lsp_config )
+    end,
+
+    jsonls = function(lspconfig, capabilities)
+        local lsp_config = {
+            capabilities = capabilities,
+        }
+        lspconfig.jsonls.setup(lsp_config )
+    end,
+
+    cssmodules_ls = function(lspconfig, capabilities)
+        local lsp_config = {
+            capabilities = capabilities,
+        }
+        lspconfig.cssmodules_ls.setup(lsp_config )
+    end,
+
+    volar = function(lspconfig, capabilities)
+        local lsp_config = {
+            filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+        }
+        lspconfig.volar.setup(lsp_config)
     end,
 }
 _M.setup = function()

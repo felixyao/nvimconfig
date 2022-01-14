@@ -46,6 +46,10 @@ And I mainly use these:
 - [python](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright)
 - [yaml](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls)
 - [erlang](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#erlangls)
+- [html](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html)
+- [jsonls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls)
+- [cssls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls)
+- [cssmodules_ls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssmodules_ls)
 
 
 
