@@ -50,6 +50,7 @@ And I mainly use these:
 - [jsonls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jsonls)
 - [cssls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls)
 - [cssmodules_ls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssmodules_ls)
+- [vuels](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#vuels)
 
 
 

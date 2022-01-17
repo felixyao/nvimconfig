@@ -106,11 +106,8 @@ local servers = {
         lspconfig.cssmodules_ls.setup(lsp_config )
     end,
 
-    volar = function(lspconfig, capabilities)
-        local lsp_config = {
-            filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
-        }
-        lspconfig.volar.setup(lsp_config)
+    vuels = function(lspconfig, capabilities)
+        lspconfig.vuels.setup{}
     end,
 }
 _M.setup = function()
