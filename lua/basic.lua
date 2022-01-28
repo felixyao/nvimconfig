@@ -119,7 +119,6 @@ basic.load_plugins = function()
             }
         use {'hrsh7th/cmp-nvim-lsp'} -- this one need to config lsp servers at start up
         use {'hrsh7th/cmp-buffer', after = "nvim-cmp"}
-        use {'uga-rosa/cmp-dictionary', after = "nvim-cmp"}
         use {'hrsh7th/cmp-path',  after = "nvim-cmp"}
         use {'hrsh7th/cmp-cmdline',  after = "nvim-cmp"}
         use {'hrsh7th/cmp-vsnip',  after = "nvim-cmp"}
