@@ -1,6 +1,6 @@
-# nvimconfig my personal nvim configuation
+# nvimconfig my personal nvim configuration
 
-## Intall
+## Install
 
 - clone the repo into your .config folder 
 ```bash
@@ -17,6 +17,7 @@ cd nvim/lua
 cp example_local_settings.lua local_settings.lua
 ```
 The file look like this:
+
 ```lua
 _M = {
     lsp_sumneko_root_path = "/home/efenyao/.tools/3rd/lua-language-server/bin/Linux", --lua language server
@@ -36,8 +37,8 @@ You can left the keys as empty string to disable the lsp function.
 
 ## Install language servers
 
-language servers are needed for nvim lsp feature. lsp will provide some very useful programming language feature such goto definition, find all references
-I recommanded to use them but it is not mandatory. 
+language servers are needed for nvim lsp feature. lsp will provide some very useful programming language feature such as goto definition, find all references
+I recommended to use them but it is not mandatory. 
 
 
 General language server guide could see [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)  

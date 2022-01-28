@@ -7,6 +7,7 @@ local editor = {}
 editor.setup_whichkey = function()
     local mappings = {
         t = {':ToggleTerm<CR>', 'Terminal'},
+        M = {':Glow<CR>', 'Markdown preview'},
         p = {
             name = 'Packer',
             r = {':PackerClean<CR>', 'Remove Unused Plugins'},
@@ -201,4 +202,12 @@ editor.setup_git = function()
     status_formatter = nil
     }
 end
+
+editor.setup_markdown = function()
+    vim.g.glow_style = 'dark'
+    vim.g.glow_border = 'rounded'
+    vim.g.glow_width = 120 
+    vim.g.glow_use_page = true 
+end
+
 return editor

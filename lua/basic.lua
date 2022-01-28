@@ -1,6 +1,7 @@
 local basic = {}
 
 basic.setup = function ()
+    vim.cmd('noswapfile')
     vim.cmd('filetype plugin indent on')
     vim.o.shortmess = vim.o.shortmess .. 'c'
     vim.o.hidden = true
@@ -142,6 +143,9 @@ basic.load_plugins = function()
             config = function()
               vim.g["sneak#label"] = 1
             end}
+
+        -- markdown 
+        use {"ellisonleao/glow.nvim", ft = 'markdown' , config = "require'editor'.setup_markdown()"}
 
     end)
 end
